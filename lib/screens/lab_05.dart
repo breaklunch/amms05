@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class LabScreen extends StatefulWidget {
   const LabScreen({super.key});
@@ -28,45 +29,30 @@ class _LabScreenState extends State<LabScreen> {
             Text('$cont', style: fontSizeVar28)
           ],
         )),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Row(
-          children: [
-            FloatingActionButton(
-                backgroundColor: Color.fromARGB(255, 37, 158, 0),
+        floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        children: [ 
+          SpeedDialChild(
+               backgroundColor: Color.fromARGB(255, 50, 87, 253),
                 child: const Icon(Icons.add),
-                onPressed: () {
+                onTap: () {
                   cont++;
                   setState(() {});
-                }),
-            FloatingActionButton(
-               backgroundColor: Color.fromARGB(255, 197, 13, 13),
-                child: const Icon(Icons.remove),
-                onPressed: () {
+          }),
+          SpeedDialChild(
+               backgroundColor: Color.fromARGB(255, 182, 58, 0),
+                 child: const Icon(Icons.remove),
+                onTap: () {
                   cont--;
                   setState(() {});
-                }),
-            FloatingActionButton(
-               backgroundColor: Color.fromARGB(255, 199, 96, 0),
-                child: const Text('En 0'),
-                onPressed: () {
+          }),
+          SpeedDialChild(
+               backgroundColor: Color.fromARGB(255, 160, 196, 0),
+                child: const Text('= 0'),
+                onTap: () {
                   cont = 0;
                   setState(() {});
-                }),
-            FloatingActionButton(
-               backgroundColor: Color.fromARGB(255, 0, 95, 158),
-                child: const Text('+5'),
-                onPressed: () {
-                  cont+=5;
-                  setState(() {});
-                }),
-                FloatingActionButton(
-                   backgroundColor: Color.fromARGB(255, 151, 141, 0),
-                child: const Text('-5'),
-                onPressed: () {
-                  cont-=5;
-                  setState(() {});
-                }),
-          ],
-        ));
+          }),],
+      ));
   }
 }
